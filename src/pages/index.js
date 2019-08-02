@@ -7,7 +7,7 @@ import Item from '../layouts/Item'
 
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
         node {
@@ -29,7 +29,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <Container flexDirection="column">
         <Item>
-          <h4>{totalCount} {totalCount > 0 ? 'Post' : 'Posts'}</h4>
+          <h4>{totalCount} {totalCount > 0 ? 'Posts' : 'Post'}</h4>
         </Item>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <Item key={node.id}>
