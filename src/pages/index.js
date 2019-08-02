@@ -1,35 +1,48 @@
 import React from "react"
-import { Link } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import Layout from '../layouts/Layout'
 
-const IndexPage = () => {
+export const query = graphql`
+  query {
+    allFile {
+      edges {
+        node {
+          relativePath
+          prettySize
+          extension
+          birthTime
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
-      <h2>This is Home Page</h2>
-      <p>I'm Adith, a front-end developer who just want to learn ton of things in front-end world</p>
+      <div >
+        <table>
+          <thead>
+            <tr>
+              <th>relativePath</th>
+              <th>prettySize</th>
+              <th>extension</th>
+              <th>birthTime</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.allFile.edges.map(({ node }, index) => (
+              <tr key={index}>
+                <td>{node.relativePath}</td>
+                <td>{node.prettySize}</td>
+                <td>{node.extension}</td>
+                <td>{node.birthTime}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Layout>
   )
 }
