@@ -11,7 +11,7 @@ const Layout = (props) => (
   <React.Fragment>
     <Header />
     <PageContainer mobileFirst>
-      <Container flexDirection="column" spacing={16}>
+      <Container flexDirection="column">
         <Item>
           {props.children}
         </Item>
