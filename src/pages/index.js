@@ -2,16 +2,21 @@ import React from "react"
 import { graphql } from 'gatsby'
 
 import Layout from '../layouts/Layout'
+import Container from '../layouts/Container'
+import Item from '../layouts/Item'
 
 export const query = graphql`
   query {
-    allFile {
+    allMarkdownRemark {
+      totalCount
       edges {
         node {
-          relativePath
-          prettySize
-          extension
-          birthTime
+          id
+          frontmatter {
+            title
+            date
+          }
+          excerpt
         }
       }
     }
@@ -19,30 +24,25 @@ export const query = graphql`
 `
 
 const IndexPage = ({ data }) => {
+  const totalCount = data.allMarkdownRemark.totalCount
   return (
     <Layout>
-      <div >
-        <table>
-          <thead>
-            <tr>
-              <th>relativePath</th>
-              <th>prettySize</th>
-              <th>extension</th>
-              <th>birthTime</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.allFile.edges.map(({ node }, index) => (
-              <tr key={index}>
-                <td>{node.relativePath}</td>
-                <td>{node.prettySize}</td>
-                <td>{node.extension}</td>
-                <td>{node.birthTime}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Container flexDirection="column">
+        <Item>
+          <h4>{totalCount} {totalCount > 0 ? 'Post' : 'Posts'}</h4>
+        </Item>
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <Item key={node.id}>
+            <Container flexDirection="column">
+              <Item>
+                <h3>{node.frontmatter.title}</h3>
+                <p>{node.frontmatter.date}</p>
+                <p>{node.excerpt}</p>
+              </Item>
+            </Container>
+          </Item>
+        ))}
+      </Container>
     </Layout>
   )
 }
