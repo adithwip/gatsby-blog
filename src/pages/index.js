@@ -7,18 +7,18 @@ import Item from '../layouts/Item'
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
+    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
       edges {
         node {
           id
           frontmatter {
             title
-            date
+            date(formatString: "DD MMMM, YYYY")
           }
           excerpt
         }
       }
+      totalCount
     }
   }
 `
