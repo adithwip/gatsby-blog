@@ -1,20 +1,18 @@
-import React from 'react'
+import React from "react"
 
-import PageContainer from './PageContainer'
-import Container from './Container'
-import Item from './Item'
+import PageContainer from "./PageContainer"
+import Container from "./Container"
+import Item from "./Item"
 
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
-const Layout = (props) => (
+const Layout = props => (
   <React.Fragment>
-    <Header />
+    <Header smallHeader={props.smallHeader} />
     <PageContainer mobileFirst>
       <Container flexDirection="column">
-        <Item>
-          {props.children}
-        </Item>
+        <Item>{props.children}</Item>
       </Container>
     </PageContainer>
     <Footer />

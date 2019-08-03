@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled, { css } from "styled-components"
 
 const StyledPageContainer = styled.section`
   && {
@@ -11,26 +11,30 @@ const StyledPageContainer = styled.section`
     margin-left: auto;
   }
 
-  @media (min-width:576px) {
-    max-width: 540px
+  @media (min-width: 576px) {
+    max-width: 540px;
   }
 
-  @media (min-width:768px) {
-    max-width: 720px
+  @media (min-width: 768px) {
+    max-width: 720px;
   }
 
-  @media (min-width:992px) {
+  @media (min-width: 992px) {
     max-width: 960px;
-    ${props => props.mobileFirst && css`
-      max-width: 720px;
-    `}
+    ${props =>
+      props.mobileFirst &&
+      css`
+        max-width: 720px;
+      `}
   }
 
-  @media (min-width:1200px) {
+  @media (min-width: 1200px) {
     max-width: 1140px;
-    ${props => props.mobileFirst && css`
-      max-width: 720px;
-    `}
+    ${props =>
+      props.mobileFirst &&
+      css`
+        max-width: 720px;
+      `}
   }
 `
 
@@ -43,11 +47,11 @@ const PageContainer = ({ mobileFirst, ...props }) => (
 )
 
 PageContainer.propTypes = {
-  mobileFirst: PropTypes.bool
+  mobileFirst: PropTypes.bool,
 }
 
 PageContainer.defaultProps = {
-  mobileFirst: false
+  mobileFirst: false,
 }
 
 export default PageContainer

@@ -1,7 +1,8 @@
 import React from "react"
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby"
+import { Helmet } from "react-helmet"
 
-import Layout from '../layouts/Layout'
+import Layout from "../layouts/Layout"
 
 export const query = graphql`
   query {
@@ -21,7 +22,12 @@ export const query = graphql`
 const Files = ({ data }) => {
   return (
     <Layout>
-      <div style={{ overflowX: 'auto' }}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Adith Widya Pradipta - File System</title>
+        <link rel="canonical" href="http://localhost:9000/" />
+      </Helmet>
+      <div style={{ overflowX: "auto" }}>
         <table>
           <thead>
             <tr>

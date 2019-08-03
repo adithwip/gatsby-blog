@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 
-import Container from '../layouts/Container'
-import Item from '../layouts/Item'
+import Container from "../layouts/Container"
+import Item from "../layouts/Item"
 
 const Footer = () => (
   <Container justify="center">
