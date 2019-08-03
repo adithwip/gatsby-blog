@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Helmet } from "react-helmet"
 
 import Layout from "../layouts/Layout"
 import Container from "../layouts/Container"
@@ -31,12 +30,7 @@ export const query = graphql`
 const IndexPage = ({ data }) => {
   const totalCount = data.allMarkdownRemark.totalCount
   return (
-    <Layout>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Adith Widya Pradipta - Blog</title>
-        <link rel="canonical" href="http://localhost:9000/" />
-      </Helmet>
+    <Layout siteTitle="Blog Page">
       <Container flexDirection="column">
         <Item>
           <h4>
@@ -46,13 +40,6 @@ const IndexPage = ({ data }) => {
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <Item key={node.id}>
             <PostExcerpt data={node} />
-            {/* <Container flexDirection="column">
-              <Item>
-                <h3>{node.frontmatter.title}</h3>
-                <p>{node.frontmatter.date}</p>
-                <p>{node.excerpt}</p>
-              </Item>
-            </Container> */}
           </Item>
         ))}
       </Container>

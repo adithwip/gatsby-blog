@@ -1,4 +1,6 @@
 import React from "react"
+import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 
 import PageContainer from "./PageContainer"
 import Container from "./Container"
@@ -7,16 +9,27 @@ import Item from "./Item"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
-const Layout = props => (
+const Layout = ({ siteTitle, smallHeader, children }) => (
   <React.Fragment>
-    <Header smallHeader={props.smallHeader} />
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>{`Adith Widya Pradipta - ${siteTitle}`}</title>
+      <link rel="canonical" href="https://naughty-booth-62a601.netlify.com/" />
+    </Helmet>
+    <Header smallHeader={smallHeader} />
     <PageContainer mobileFirst>
       <Container flexDirection="column">
-        <Item>{props.children}</Item>
+        <Item>{children}</Item>
       </Container>
     </PageContainer>
     <Footer />
   </React.Fragment>
 )
+
+Layout.propTypes = {
+  siteTitle: PropTypes.string.isRequired,
+  smallHeader: PropTypes.bool,
+  children: PropTypes.element.isRequired,
+}
 
 export default Layout

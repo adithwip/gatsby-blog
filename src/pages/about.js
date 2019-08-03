@@ -1,16 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Helmet } from "react-helmet"
 
 import Layout from "../layouts/Layout"
 
 const AboutPage = () => (
-  <Layout>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>Adith Widya Pradipta - About</title>
-      <link rel="canonical" href="http://localhost:9000/" />
-    </Helmet>
+  <Layout siteTitle="About Page">
     <h1>Hi, I'm Adith</h1>
     <p>You can contact me at:</p>
     <ul>
