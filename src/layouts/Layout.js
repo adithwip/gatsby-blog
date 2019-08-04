@@ -25,6 +25,10 @@ const Layout = ({
       <meta property="og:type" content={siteType || "website"} />
       <meta property="og:description" content={siteDescription} />
       <meta property="og:image" content={siteImage} />
+      <meta property="og:image:type" content="image/jpg" />
+      <meta property="og:image:width" content="300" />
+      <meta property="og:image:height" content="300" />
+      <meta property="og:image:alt" content="Blog image" />
       {siteUrl && <meta property="og:url" content={siteUrl} />}
       <meta name="Description" content={siteDescription} />
       <title>{`Adith Widya Pradipta - ${siteTitle}`}</title>
