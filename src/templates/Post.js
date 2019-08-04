@@ -13,14 +13,11 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "DD MMMM, YYYY")
-        image {
-          publicURL
-        }
       }
     }
     site {
       siteMetadata {
-        siteUrl
+        image
       }
     }
   }
@@ -29,7 +26,7 @@ export const query = graphql`
 const Post = ({ data, location }) => {
   const post = data.markdownRemark
   const url = location.href
-  const image = post.frontmatter.image && post.frontmatter.image.publicURL
+  const image = data.site.siteMetadata.image
 
   return (
     <Layout

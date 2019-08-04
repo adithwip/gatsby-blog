@@ -9,6 +9,7 @@ module.exports = {
   siteMetadata: {
     title: `Adith Widya Pradipta`,
     siteUrl: `https://naughty-booth-62a601.netlify.com`,
+    image: `./static/images/blog-image.jpg`,
   },
   plugins: [
     {
