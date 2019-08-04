@@ -1,6 +1,7 @@
 ---
 title: "Pandangan Saya Tentang Berpikir Positif"
 date: "2017-08-10"
+image: "./karsten-wurth-karsten-wuerth-UbGYPMbMYP8-unsplash.jpg"
 ---
 
 ![Stay positives](karsten-wurth-karsten-wuerth-UbGYPMbMYP8-unsplash.jpg)
