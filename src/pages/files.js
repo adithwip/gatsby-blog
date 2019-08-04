@@ -20,7 +20,10 @@ export const query = graphql`
 
 const Files = ({ data }) => {
   return (
-    <Layout siteTitle="File System">
+    <Layout
+      siteTitle="File System"
+      siteDescription="Contains all files that built this blog"
+    >
       <div style={{ overflowX: "auto" }}>
         <table>
           <thead>

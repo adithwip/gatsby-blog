@@ -4,7 +4,10 @@ import { Link } from "gatsby"
 import Layout from "../layouts/Layout"
 
 const AboutPage = () => (
-  <Layout siteTitle="About Page">
+  <Layout
+    siteTitle="About Page"
+    siteDescription="Will provide my readers about myself"
+  >
     <h1>Hi, I'm Adith</h1>
     <p>You can contact me at:</p>
     <ul>

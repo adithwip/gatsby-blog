@@ -9,10 +9,11 @@ import Item from "./Item"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
-const Layout = ({ siteTitle, smallHeader, children }) => (
+const Layout = ({ siteTitle, siteDescription, smallHeader, children }) => (
   <React.Fragment>
     <Helmet>
       <meta charSet="utf-8" />
+      <meta name="Description" content={siteDescription} />
       <title>{`Adith Widya Pradipta - ${siteTitle}`}</title>
       <link rel="canonical" href="https://naughty-booth-62a601.netlify.com/" />
     </Helmet>
@@ -28,6 +29,7 @@ const Layout = ({ siteTitle, smallHeader, children }) => (
 
 Layout.propTypes = {
   siteTitle: PropTypes.string.isRequired,
+  siteDescription: PropTypes.string.isRequired,
   smallHeader: PropTypes.bool,
   children: PropTypes.element.isRequired,
 }

@@ -30,7 +30,10 @@ export const query = graphql`
 const IndexPage = ({ data }) => {
   const totalCount = data.allMarkdownRemark.totalCount
   return (
-    <Layout siteTitle="Blog Page">
+    <Layout
+      siteTitle="Blog Page"
+      siteDescription="Homepage of Adith Widya Pradipta's blog"
+    >
       <Container flexDirection="column">
         <Item>
           <h4>

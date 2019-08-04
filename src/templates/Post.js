@@ -9,6 +9,7 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      excerpt
       frontmatter {
         title
         date(formatString: "DD MMMM, YYYY")
@@ -20,7 +21,11 @@ export const query = graphql`
 const Post = ({ data }) => {
   const post = data.markdownRemark
   return (
-    <Layout smallHeader>
+    <Layout
+      smallHeader
+      siteTitle={post.frontmatter.title}
+      siteDescription={post.excerpt}
+    >
       <Container flexDirection="column">
         <Item>
           <h1>{post.frontmatter.title}</h1>
