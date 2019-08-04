@@ -37,11 +37,15 @@ const IndexPage = ({ data }) => {
             {totalCount} {totalCount > 0 ? "Posts" : "Post"}
           </h4>
         </Item>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <Item key={node.id}>
-            <PostExcerpt data={node} />
-          </Item>
-        ))}
+        <Item>
+          <Container flexDirection="column" spacing={8} column={3}>
+            {data.allMarkdownRemark.edges.map(({ node }) => (
+              <Item key={node.id}>
+                <PostExcerpt data={node} />
+              </Item>
+            ))}
+          </Container>
+        </Item>
       </Container>
     </Layout>
   )
