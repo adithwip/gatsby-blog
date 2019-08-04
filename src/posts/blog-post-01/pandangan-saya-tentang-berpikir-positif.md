@@ -3,6 +3,8 @@ title: "Pandangan Saya Tentang Berpikir Positif"
 date: "2017-08-10"
 ---
 
+![Stay positives](karsten-wurth-karsten-wuerth-UbGYPMbMYP8-unsplash.jpg)
+
 Saya senang berpikir. Kadang saya bisa merasakan aliran listrik yang sedang terjadi saat saya sedang memikirkan sebuah hal rumit. Menyenangkan kadang bisa memikirkan sesuatu, berkhayal, bersemangat dan melakukan hal pikiran lainnya. Namun, pernahkah kita menjadi terlalu larut dalam sebuah pikiran? Well, itulah yang saya benci dari sifat overthink saya. Namun, saya memiliki keyakinan, bahwa ‘sifat’ memang pada dasarnya tidak bisa dirubah. Namun, ‘sikap’ seseorang dapat menutupi sifat jeleknya, yang pada akhirnya akan mengubah seseorang itu. Dan saya percaya, bahwa saya sudah berhasil dalam menyikapi sifat-sifat buruk saya dengan pikiran positif.
 
 
