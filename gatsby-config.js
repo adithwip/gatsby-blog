@@ -10,6 +10,12 @@ module.exports = {
     title: `Adith Widya Pradipta`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-html-attributes`,
+      options: {
+        lang: `en`
+      }
+    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     {
