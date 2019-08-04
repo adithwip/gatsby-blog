@@ -37,6 +37,7 @@ const Post = ({ data, location }) => {
       siteTitle={post.frontmatter.title}
       siteType="article"
       siteUrl={url}
+      siteImage={image}
       siteDescription={post.excerpt}
     >
       <Container flexDirection="column">

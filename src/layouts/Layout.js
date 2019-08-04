@@ -14,6 +14,7 @@ const Layout = ({
   siteDescription,
   siteType,
   siteUrl,
+  siteImage,
   smallHeader,
   children,
 }) => (
@@ -23,6 +24,7 @@ const Layout = ({
       <meta property="og:title" content={siteTitle} />
       <meta property="og:type" content={siteType || "website"} />
       <meta property="og:description" content={siteDescription} />
+      <meta property="og:image" content={siteImage} />
       {siteUrl && <meta property="og:url" content={siteUrl} />}
       <meta name="Description" content={siteDescription} />
       <title>{`Adith Widya Pradipta - ${siteTitle}`}</title>
@@ -42,6 +44,7 @@ Layout.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   siteDescription: PropTypes.string.isRequired,
   siteType: PropTypes.string,
+  siteImage: PropTypes.string,
   siteUrl: PropTypes.string,
   smallHeader: PropTypes.bool,
   children: PropTypes.element.isRequired,
