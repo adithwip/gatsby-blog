@@ -38,7 +38,7 @@ const IndexPage = ({ data }) => {
           </h4>
         </Item>
         <Item>
-          <Container flexDirection="column" spacing={8} column={3}>
+          <Container flexDirection="column" spacing={8} column={2}>
             {data.allMarkdownRemark.edges.map(({ node }) => (
               <Item key={node.id}>
                 <PostExcerpt data={node} />
