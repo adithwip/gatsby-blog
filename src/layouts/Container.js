@@ -15,51 +15,72 @@ const StyledContainer = styled.div`
   padding: ${props => props.padding};
 
   ${props =>
-    props.background &&
+    props.spacing &&
     css`
-      background-color: #1c2321;
-      border-radius: 10px;
-      padding: 1rem;
+      & > div.grid-item {
+        padding: ${props => props.spacing / 2}px;
+      }
     `}
 
   ${props =>
-    props.spacing &&
+    props.column &&
     css`
-      & > div {
-        margin: ${props => props.spacing / 2}px;
+      @media (min-width: 768px) {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+      }
+
+      & > div.grid-item {
+        @media (min-width: 768px) {
+          display: block;
+          flex: none;
+          width: ${props => 100 / props.column}%;
+        }
+
+        @media (min-width: 992px) {
+          display: block;
+          flex: none;
+          width: ${props => 100 / (props.column + 1)}%;
+        }
       }
     `}
 `
 
 const Container = props => {
   const {
+    column,
     flexDirection,
     flexWrap,
     justify,
     alignItems,
     alignContent,
-    background,
+    responsive,
   } = props
+  const classNames = [`grid-container`, (() => column && `column`)()]
+    .join(" ")
+    .trim()
 
   return (
     <StyledContainer
-      className="grid-container"
+      className={classNames}
+      column={column}
+      responsive={responsive}
       flexDirection={flexDirection}
       flexWrap={flexWrap}
       justify={justify}
       alignItems={alignItems}
       alignContent={alignContent}
-      background={background}
       {...props}
     />
   )
 }
 
 Container.propTypes = {
-  background: PropTypes.bool,
+  responsive: PropTypes.bool,
   margin: PropTypes.string,
   padding: PropTypes.string,
   spacing: PropTypes.oneOf([8, 16, 24, 32]),
+  column: PropTypes.oneOf([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
   flexDirection: PropTypes.oneOf([
     "row",
     "row-reverse",
