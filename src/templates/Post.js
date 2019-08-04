@@ -18,12 +18,15 @@ export const query = graphql`
   }
 `
 
-const Post = ({ data }) => {
+const Post = ({ data, location }) => {
   const post = data.markdownRemark
+  const url = location.href
   return (
     <Layout
       smallHeader
       siteTitle={post.frontmatter.title}
+      siteType="article"
+      siteUrl={url}
       siteDescription={post.excerpt}
     >
       <Container flexDirection="column">
