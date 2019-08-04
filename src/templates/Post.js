@@ -29,8 +29,8 @@ export const query = graphql`
 const Post = ({ data, location }) => {
   const post = data.markdownRemark
   const url = location.href
-  const image = post.frontmatter.image && `${data.site.siteMetadata.siteUrl}${post.frontmatter.image.publicURL}`
-  console.log("image", image)
+  const image = post.frontmatter.image && post.frontmatter.image.publicURL
+
   return (
     <Layout
       smallHeader
