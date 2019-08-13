@@ -6,29 +6,8 @@ import Container from "../layouts/Container"
 import Item from "../layouts/Item"
 import PostExcerpt from "../components/PostExcerpt"
 
-export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-          }
-          fields {
-            slug
-          }
-          excerpt
-        }
-      }
-      totalCount
-    }
-  }
-`
-
 const IndexPage = ({ data }) => {
-  const totalCount = data.allMarkdownRemark.totalCount
+  const totalCount = data.allContentfulBlogPost.totalCount
   return (
     <Layout
       siteTitle="Blog Page"
@@ -41,8 +20,8 @@ const IndexPage = ({ data }) => {
           </h4>
         </Item>
         <Item>
-          <Container flexDirection="column" spacing={8} column={2}>
-            {data.allMarkdownRemark.edges.map(({ node }) => (
+          <Container flexDirection="column" spacing={8}>
+            {data.allContentfulBlogPost.edges.map(({ node }) => (
               <Item key={node.id}>
                 <PostExcerpt data={node} />
               </Item>
@@ -55,3 +34,40 @@ const IndexPage = ({ data }) => {
 }
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          slug
+          publishedDate(formatString: "DD MMMM, YYYY")
+        }
+      }
+      totalCount
+    }
+  }
+`
+
+// export const query = graphql`
+//   query {
+//     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+//       edges {
+//         node {
+//           id
+//           frontmatter {
+//             title
+//             date(formatString: "DD MMMM, YYYY")
+//           }
+//           fields {
+//             slug
+//           }
+//           excerpt
+//         }
+//       }
+//       totalCount
+//     }
+//   }
+// `
