@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
+import Darkmode from "darkmode-js"
 
 import PageContainer from "./PageContainer"
 import Container from "./Container"
@@ -8,6 +9,9 @@ import Item from "./Item"
 
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+
+const darkMode = new Darkmode()
+darkMode.showWidget()
 
 const Layout = ({
   siteTitle,
@@ -34,7 +38,7 @@ const Layout = ({
       <title>{`${siteTitle} | Adith Widya Pradipta`}</title>
       <link rel="canonical" href="https://naughty-booth-62a601.netlify.com/" />
     </Helmet>
-    <Header/>
+    <Header />
     <PageContainer mobileFirst>
       <Container flexDirection="column">
         <Item>{children}</Item>
