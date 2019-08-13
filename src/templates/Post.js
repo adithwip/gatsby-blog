@@ -72,7 +72,6 @@ const Post = ({ data, location }) => {
 
   return (
     <Layout
-      smallHeader
       siteTitle={post.title}
       siteType="article"
       siteUrl={url}

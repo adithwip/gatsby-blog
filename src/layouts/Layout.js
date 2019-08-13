@@ -34,7 +34,7 @@ const Layout = ({
       <title>{`${siteTitle} | Adith Widya Pradipta`}</title>
       <link rel="canonical" href="https://naughty-booth-62a601.netlify.com/" />
     </Helmet>
-    <Header smallHeader={smallHeader} />
+    <Header/>
     <PageContainer mobileFirst>
       <Container flexDirection="column">
         <Item>{children}</Item>
