@@ -7,11 +7,11 @@ import Item from "../layouts/Item"
 const PostExcerpt = props => (
   <Container flexDirection="column">
     <Item>
-      <Link to={props.data.fields.slug}>
-        <h3>{props.data.frontmatter.title}</h3>
+      <Link to={`/${props.data.slug}`}>
+        <h3>{props.data.title}</h3>
       </Link>
-      <p>{props.data.frontmatter.date}</p>
-      <p style={{ color: "black" }}>{props.data.excerpt}</p>
+      <p>{props.data.publishedDate}</p>
+      {/* <p style={{ color: "black" }}>{props.data.excerpt}</p> */}
     </Item>
   </Container>
 )
