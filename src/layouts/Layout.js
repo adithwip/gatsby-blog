@@ -31,7 +31,7 @@ const Layout = ({
       <meta property="og:image:alt" content="Blog image" />
       {siteUrl && <meta property="og:url" content={siteUrl} />}
       <meta name="Description" content={siteDescription} />
-      <title>{`Adith Widya Pradipta - ${siteTitle}`}</title>
+      <title>{`${siteTitle} | Adith Widya Pradipta`}</title>
       <link rel="canonical" href="https://naughty-booth-62a601.netlify.com/" />
     </Helmet>
     <Header smallHeader={smallHeader} />
