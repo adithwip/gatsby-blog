@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import Darkmode from "darkmode-js"
+// import Darkmode from "darkmode-js"
 
 import PageContainer from "./PageContainer"
 import Container from "./Container"
@@ -10,8 +10,8 @@ import Item from "./Item"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
-const darkMode = new Darkmode()
-darkMode.showWidget()
+// const darkMode = new Darkmode()
+// darkMode.showWidget()
 
 const Layout = ({
   siteTitle,
