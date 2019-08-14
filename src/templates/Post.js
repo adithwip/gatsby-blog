@@ -2,28 +2,21 @@ import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Img from "gatsby-image"
+import styled, { css } from "styled-components"
 
 import Layout from "../layouts/Layout"
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
 
-// export const query = graphql`
-//   query($slug: String!) {
-//     markdownRemark(fields: { slug: { eq: $slug } }) {
-//       html
-//       excerpt
-//       frontmatter {
-//         title
-//         date(formatString: "DD MMMM, YYYY")
-//       }
-//     }
-//     site {
-//       siteMetadata {
-//         image
-//       }
-//     }
-//   }
-// `
+const StyledImage = styled(Img)`
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+`
 
 const fixId = id => {
   if (id.length === 23 && id.startsWith("c")) {
@@ -65,7 +58,9 @@ const Post = ({ data, location }) => {
           edge => edge.node.contentful_id === fixId(imageId)
         )
 
-        return <Img fluid={image.node.fluid} />
+        return (
+          <StyledImage fluid={image.node.fluid} />
+        )
       },
     },
   }
@@ -91,3 +86,21 @@ const Post = ({ data, location }) => {
 }
 
 export default Post
+
+// export const query = graphql`
+//   query($slug: String!) {
+//     markdownRemark(fields: { slug: { eq: $slug } }) {
+//       html
+//       excerpt
+//       frontmatter {
+//         title
+//         date(formatString: "DD MMMM, YYYY")
+//       }
+//     }
+//     site {
+//       siteMetadata {
+//         image
+//       }
+//     }
+//   }
+// `
