@@ -17,6 +17,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-html-attributes`,
+      options: {
+        lang: `en`
+      }
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
@@ -24,17 +30,19 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-html-attributes`,
-      options: {
-        lang: `en`
-      }
-    },
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-sharp`,
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            }
+          },
           `gatsby-remark-relative-images`,
           {
             resolve: `gatsby-remark-images`,
@@ -42,10 +50,12 @@ module.exports = {
               maxWidth: 1200,
               linkImagesToOriginal: false,
             }
-          }
-        ]
-      }
+          },
+        ],
+      },
     },
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -71,12 +81,12 @@ module.exports = {
         path: `${__dirname}/src`,
       }
     },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography`,
+    //   },
+    // },
     //... other plugins
   ],
 }
