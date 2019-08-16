@@ -32,6 +32,11 @@ export const query = graphql`
       body {
         json
       }
+      bodyText {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
     allContentfulAsset {
       edges {
@@ -58,9 +63,7 @@ const Post = ({ data, location }) => {
           edge => edge.node.contentful_id === fixId(imageId)
         )
 
-        return (
-          <StyledImage fluid={image.node.fluid} />
-        )
+        return <StyledImage fluid={image.node.fluid} />
       },
     },
   }
@@ -79,7 +82,12 @@ const Post = ({ data, location }) => {
         <Item>
           <p style={{ color: "#1CA086" }}>{post.publishedDate}</p>
         </Item>
-        <Item>{documentToReactComponents(post.body.json, options)}</Item>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: post.bodyText.childMarkdownRemark.html,
+          }}
+        />
+        {/* <Item>{documentToReactComponents(post.body.json, options)}</Item> */}
       </Container>
     </Layout>
   )
