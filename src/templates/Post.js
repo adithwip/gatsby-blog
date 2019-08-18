@@ -1,22 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Img from "gatsby-image"
-import styled, { css } from "styled-components"
+// import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
+import FeaturedImage from "../components/FeaturedImage"
 import Layout from "../layouts/Layout"
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
-
-const StyledImage = styled(Img)`
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-  &:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  }
-`
 
 const fixId = id => {
   if (id.length === 23 && id.startsWith("c")) {
@@ -29,6 +18,11 @@ export const query = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       publishedDate(formatString: "MMMM Do, YYYY")
+      featuredImage {
+        fluid {
+          ...GatsbyContentfulFluid
+        }
+      }
       bodyText {
         childMarkdownRemark {
           html
@@ -60,7 +54,7 @@ const Post = ({ data, location }) => {
           edge => edge.node.contentful_id === fixId(imageId)
         )
 
-        return <StyledImage fluid={image.node.fluid} />
+        return <FeaturedImage fluid={image.node.fluid} />
       },
     },
   }
@@ -72,18 +66,23 @@ const Post = ({ data, location }) => {
       siteUrl={url}
       siteDescription="Site description soon from contentful"
     >
-      <Container flexDirection="column">
+      <Container flexDirection="column" spacing={16}>
         <Item>
           <h1>{post.title}</h1>
         </Item>
         <Item>
-          <p style={{ color: "#1CA086" }}>{post.publishedDate}</p>
+          <p>{post.publishedDate}</p>
         </Item>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: post.bodyText.childMarkdownRemark.html,
-          }}
-        />
+        <Item>
+          <FeaturedImage fluid={post.featuredImage.fluid} />
+        </Item>
+        <Item>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.bodyText.childMarkdownRemark.html,
+            }}
+          />
+        </Item>
         {/* <Item>{documentToReactComponents(post.body.json, options)}</Item> */}
       </Container>
     </Layout>
