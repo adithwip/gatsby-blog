@@ -86,8 +86,6 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  console.log('result', result)
-
   result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
     createPage({
       path: node.slug,
