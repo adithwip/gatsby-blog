@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
+import FeaturedImage from "../components/FeaturedImage"
 import Layout from "../layouts/Layout"
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
@@ -8,6 +9,8 @@ import PostExcerpt from "../components/PostExcerpt"
 
 const IndexPage = ({ data }) => {
   const totalCount = data.allContentfulBlogPost.totalCount
+  const latestPost = data.allContentfulBlogPost.edges[0].node.id
+  console.log("latestPost", latestPost)
   return (
     <Layout
       siteTitle="Blog Page"
@@ -20,11 +23,18 @@ const IndexPage = ({ data }) => {
           </h4>
         </Item>
         <Item>
-          <Container flexDirection="column" spacing={8}>
+          <Container flexDirection="column" spacing={16}>
             {data.allContentfulBlogPost.edges.map(({ node }) => (
-              <Item key={node.id}>
-                <PostExcerpt data={node} />
-              </Item>
+              <>
+                {node.id === latestPost && (
+                  <Item>
+                    <FeaturedImage fluid={node.featuredImage.fluid} />
+                  </Item>
+                )}
+                <Item key={node.id}>
+                  <PostExcerpt data={node} />
+                </Item>
+              </>
             ))}
           </Container>
         </Item>
@@ -43,6 +53,12 @@ export const query = graphql`
           id
           title
           slug
+          excerpt
+          featuredImage {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
           publishedDate(formatString: "DD MMMM, YYYY")
         }
       }
@@ -50,24 +66,3 @@ export const query = graphql`
     }
   }
 `
-
-// export const query = graphql`
-//   query {
-//     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-//       edges {
-//         node {
-//           id
-//           frontmatter {
-//             title
-//             date(formatString: "DD MMMM, YYYY")
-//           }
-//           fields {
-//             slug
-//           }
-//           excerpt
-//         }
-//       }
-//       totalCount
-//     }
-//   }
-// `
