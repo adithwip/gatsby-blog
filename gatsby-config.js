@@ -29,10 +29,27 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       }
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 1140,
+              linkImagesToOriginal: false,
+              withWebp: true,
+            }
+          },
+          // {
+          //   resolve: `gatsby-remark-images`,
+          //   options: {
+          //     maxWidth: 100,
+          //     // linkImagesToOriginal: false,
+          //   }
+          // },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -43,19 +60,11 @@ module.exports = {
               noInlineHighlight: false,
             }
           },
-          `gatsby-remark-relative-images`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1200,
-              linkImagesToOriginal: false,
-            }
-          },
+          // `gatsby-remark-relative-images`,
         ],
       },
     },
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -81,12 +90,12 @@ module.exports = {
         path: `${__dirname}/src`,
       }
     },
-    // {
-    //   resolve: `gatsby-plugin-typography`,
-    //   options: {
-    //     pathToConfigModule: `src/utils/typography`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
     //... other plugins
   ],
 }
