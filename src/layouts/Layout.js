@@ -3,9 +3,9 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 // import Darkmode from "darkmode-js"
 
-import "prismjs/themes/prism-tomorrow.css"
-import "prismjs/plugins/line-numbers/prism-line-numbers.css"
-import "../styles/prism-override.css"
+// import "prismjs/themes/prism-tomorrow.css"
+// import "prismjs/plugins/line-numbers/prism-line-numbers.css"
+// import "../styles/prism-override.css"
 
 import PageContainer from "./PageContainer"
 import Container from "./Container"
