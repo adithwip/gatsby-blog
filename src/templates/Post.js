@@ -29,9 +29,6 @@ export const query = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       publishedDate(formatString: "MMMM Do, YYYY")
-      body {
-        json
-      }
       bodyText {
         childMarkdownRemark {
           html
