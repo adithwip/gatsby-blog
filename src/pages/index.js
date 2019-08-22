@@ -23,7 +23,7 @@ const IndexPage = ({ data }) => {
           </h4>
         </Item>
         <Item>
-          <Container flexDirection="column" spacing={16}>
+          <Container flexDirection="column" spacing={8}>
             {data.allContentfulBlogPost.edges.map(({ node }) => (
               <>
                 {node.id === latestPost && (
