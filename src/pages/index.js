@@ -27,7 +27,7 @@ const IndexPage = ({ data }) => {
             {data.allContentfulBlogPost.edges.map(({ node }) => (
               <>
                 {node.id === latestPost && (
-                  <Item>
+                  <Item style={{ paddingBottom: 16 }}>
                     <FeaturedImage fluid={node.featuredImage.fluid} />
                   </Item>
                 )}
