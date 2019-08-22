@@ -6,6 +6,15 @@ import Headroom from "react-headroom"
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
 
+const StyledHeaderLogo = styled(Link)`
+  text-decoration: none;
+  color: #000;
+
+  & * {
+    margin: 0;
+  }
+`
+
 const StyledHeader = styled.header`
   padding: 8px 16px;
   max-width: 1080px;
@@ -50,21 +59,17 @@ const Header = () => {
           flexWrap="wrap"
         >
           <Item flex={1}>
-            <h4 style={{ margin: 0 }}>
-              {data.site.siteMetadata.title}
-            </h4>
+            <StyledHeaderLogo to="/">
+              <h4>
+                {data.site.siteMetadata.title}
+              </h4>
+            </StyledHeaderLogo>
           </Item>
           <Item flex={2}>
             <Item>
               <Container spacing={16} justify="flex-end">
                 <Item>
-                  <Link to="/">Home</Link>
-                </Item>
-                <Item>
-                  <Link to="/about">About</Link>
-                </Item>
-                <Item>
-                  <Link to="/blog">Blog</Link>
+                  <Link to="/about">About Me</Link>
                 </Item>
               </Container>
             </Item>
