@@ -60,9 +60,7 @@ const Header = () => {
         >
           <Item flex={1}>
             <StyledHeaderLogo to="/">
-              <h4>
-                {data.site.siteMetadata.title}
-              </h4>
+              <h4>{data.site.siteMetadata.title}</h4>
             </StyledHeaderLogo>
           </Item>
           <Item flex={2}>
