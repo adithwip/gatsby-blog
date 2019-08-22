@@ -7,7 +7,7 @@ import Container from "../layouts/Container"
 import Item from "../layouts/Item"
 
 const StyledHeader = styled.header`
-  padding: 16px;
+  padding: 8px 16px;
   max-width: 1080px;
   margin: 0 auto;
   margin-bottom: 16px;
@@ -16,8 +16,14 @@ const StyledHeader = styled.header`
 
 const StyledHeadroom = styled(Headroom)`
   & .headroom--scrolled {
-    padding: 16px;
-    background-color: #f0f6f2;
+    padding: 8px 16px;
+    background-color: #fbfcfb;
+    border-bottom: 1px solid #e5f0e9;
+
+    .grid-container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
   }
 `
 
@@ -44,9 +50,11 @@ const Header = () => {
           flexWrap="wrap"
         >
           <Item flex={1}>
-            <h4 style={{ margin: 0 }}>Adith Widya Pradipta</h4>
+            <h4 style={{ margin: 0 }}>
+              {data.site.siteMetadata.title}
+            </h4>
           </Item>
-          <Item flex={1}>
+          <Item flex={2}>
             <Item>
               <Container spacing={16} justify="flex-end">
                 <Item>
