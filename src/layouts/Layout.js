@@ -3,14 +3,11 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 // import Darkmode from "darkmode-js"
 
-// import "prismjs/themes/prism-tomorrow.css"
-// import "prismjs/plugins/line-numbers/prism-line-numbers.css"
-// import "../styles/prism-override.css"
-
-import PageContainer from "./PageContainer"
+import SectionContainer from "./SectionContainer"
 import Container from "./Container"
 import Item from "./Item"
 
+import AbsoluteTop from "./AbsoluteTop"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
@@ -18,48 +15,70 @@ import Footer from "../components/Footer"
 // darkMode.showWidget()
 
 const Layout = ({
+  absoluteTop,
   siteTitle,
   siteDescription,
   siteType,
   siteUrl,
   siteImage,
-  smallHeader,
+  noPageContainer,
   children,
-}) => (
-  <React.Fragment>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <meta property="og:title" content={siteTitle} />
-      <meta property="og:type" content={siteType || "website"} />
-      <meta property="og:description" content={siteDescription} />
-      <meta property="og:image" content={siteImage} />
-      <meta property="og:image:type" content="image/jpg" />
-      <meta property="og:image:width" content="300" />
-      <meta property="og:image:height" content="300" />
-      <meta property="og:image:alt" content="Blog image" />
-      {siteUrl && <meta property="og:url" content={siteUrl} />}
-      <meta name="Description" content={siteDescription} />
-      <title>{`${siteTitle} | Adith Widya Pradipta`}</title>
-      <link rel="canonical" href="https://naughty-booth-62a601.netlify.com/" />
-    </Helmet>
-    <Header />
-    <PageContainer mobileFirst>
-      <Container flexDirection="column">
-        <Item>{children}</Item>
-      </Container>
-    </PageContainer>
-    <Footer />
-  </React.Fragment>
-)
+}) => {
+  const bodyAndFooterElements = (
+    <>
+      {!noPageContainer ? (
+        <SectionContainer mobileFirst>
+          <Container flexDirection="column">
+            <Item>{children}</Item>
+          </Container>
+        </SectionContainer>
+      ) : (
+        children
+      )}
+      <Footer />
+    </>
+  )
+  return (
+    <React.Fragment>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta property="og:title" content={siteTitle} />
+        <meta property="og:type" content={siteType || "website"} />
+        <meta property="og:description" content={siteDescription} />
+        <meta property="og:image" content={siteImage} />
+        <meta property="og:image:type" content="image/jpg" />
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="300" />
+        <meta property="og:image:alt" content="Blog image" />
+        {siteUrl && <meta property="og:url" content={siteUrl} />}
+        <meta name="Description" content={siteDescription} />
+        <title>{`${siteTitle} | Adith Widya Pradipta`}</title>
+        <link rel="canonical" href="https://adithwp.netlify.com/" />
+      </Helmet>
+      <Header />
+      {absoluteTop ? (
+        <AbsoluteTop>{bodyAndFooterElements}</AbsoluteTop>
+      ) : (
+        bodyAndFooterElements
+      )}
+    </React.Fragment>
+  )
+}
 
 Layout.propTypes = {
+  absoluteTop: PropTypes.bool,
   siteTitle: PropTypes.string.isRequired,
   siteDescription: PropTypes.string.isRequired,
   siteType: PropTypes.string,
   siteImage: PropTypes.string,
   siteUrl: PropTypes.string,
-  smallHeader: PropTypes.bool,
   children: PropTypes.element.isRequired,
+  noPageContainer: PropTypes.bool,
+}
+
+Layout.defaultProps = {
+  noPageContainer: false,
+  absoluteTop: false,
 }
 
 export default Layout
