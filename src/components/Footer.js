@@ -15,9 +15,9 @@ const Footer = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        logo: file(relativePath: { eq: "icon.png" }) {
+        logo: file(relativePath: { eq: "footer-icon.png" }) {
           childImageSharp {
-            fixed(width: 24, height: 24) {
+            fixed(width: 80, height: 80) {
               ...GatsbyImageSharpFixed
             }
           }
