@@ -11,6 +11,12 @@ const StyledPageContainer = styled.section`
     margin-left: auto;
   }
 
+  ${props =>
+    props.noPadding &&
+    css`
+      padding: unset !important;
+    `}
+
   @media (min-width: 576px) {
     max-width: 540px;
   }
@@ -38,20 +44,22 @@ const StyledPageContainer = styled.section`
   }
 `
 
-const PageContainer = ({ mobileFirst, ...props }) => (
+const SectionContainer = ({ mobileFirst, noPadding, ...props }) => (
   <StyledPageContainer
-    className="page-container"
+    className="section-container"
     mobileFirst={mobileFirst}
+    noPadding={noPadding}
     {...props}
   />
 )
 
-PageContainer.propTypes = {
+SectionContainer.propTypes = {
   mobileFirst: PropTypes.bool,
 }
 
-PageContainer.defaultProps = {
+SectionContainer.defaultProps = {
   mobileFirst: false,
+  noPadding: false,
 }
 
-export default PageContainer
+export default SectionContainer
