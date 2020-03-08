@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-// import Darkmode from "darkmode-js"
+import Darkmode from "darkmode-js"
 
 import SectionContainer from "./SectionContainer"
 import Container from "./Container"
