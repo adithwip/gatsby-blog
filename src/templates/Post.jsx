@@ -6,12 +6,6 @@ import Layout from "../layouts/Layout"
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
 
-const fixId = (id) => {
-  if (id.length === 23 && id.startsWith("c")) {
-    return id.slice(1)
-  }
-}
-
 export const query = graphql`
   query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
@@ -71,21 +65,3 @@ const Post = ({ data, location }) => {
 }
 
 export default Post
-
-// export const query = graphql`
-//   query($slug: String!) {
-//     markdownRemark(fields: { slug: { eq: $slug } }) {
-//       html
-//       excerpt
-//       frontmatter {
-//         title
-//         date(formatString: "DD MMMM, YYYY")
-//       }
-//     }
-//     site {
-//       siteMetadata {
-//         image
-//       }
-//     }
-//   }
-// `
