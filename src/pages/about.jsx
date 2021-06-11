@@ -1,8 +1,7 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../layouts/Layout"
-import SectionContainer from "../layouts/SectionContainer"
 
 export const query = graphql`
   {

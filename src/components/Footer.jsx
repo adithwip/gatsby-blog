@@ -31,7 +31,10 @@ const Footer = () => {
         <VerticalLine />
       </Item>
       <Item>
-        <GatsbyImage image={data.logo.childImageSharp.gatsbyImageData} />
+        <GatsbyImage
+          image={data.logo.childImageSharp.gatsbyImageData}
+          alt="Feature Image"
+        />
       </Item>
       <Item>
         <h6>© {currentYear} - Adith Widya Pradipta</h6>

@@ -20,14 +20,6 @@ export const query = graphql`
         }
       }
     }
-    allContentfulAsset {
-      edges {
-        node {
-          contentful_id
-          gatsbyImageData
-        }
-      }
-    }
   }
 `
 

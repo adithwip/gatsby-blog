@@ -1,8 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
 
-// import FeaturedImage from "../components/FeaturedImage"
 import Layout from "../layouts/Layout"
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
@@ -25,17 +23,10 @@ const IndexPage = ({ data }) => {
         </Item>
         <Item>
           <Container flexDirection="column" spacing={8}>
-            {data.allContentfulBlogPost.edges.map(({ node }) => (
-              <>
-                {node.id === latestPost && (
-                  <Item key={node.id} style={{ paddingBottom: 16 }}>
-                    <GatsbyImage image={node.featuredImage.gatsbyImageData} />
-                  </Item>
-                )}
-                <Item key={node.id}>
-                  <PostExcerpt data={node} />
-                </Item>
-              </>
+            {data.allContentfulBlogPost.edges.map(({ node }, index) => (
+              <Item key={`${node.id}+${index}`}>
+                <PostExcerpt data={node} />
+              </Item>
             ))}
           </Container>
         </Item>
