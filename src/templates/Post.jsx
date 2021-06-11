@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import FeaturedImage from "../components/FeaturedImage"
 import Layout from "../layouts/Layout"
@@ -19,9 +18,7 @@ export const query = graphql`
       title
       publishedDate(formatString: "MMMM Do, YYYY")
       featuredImage {
-        fluid {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData
       }
       bodyText {
         childMarkdownRemark {
@@ -33,10 +30,7 @@ export const query = graphql`
       edges {
         node {
           contentful_id
-          fluid {
-            # Use fragments: https://www.gatsbyjs.org/packages/gatsby-image/
-            ...GatsbyContentfulFluid
-          }
+          gatsbyImageData
         }
       }
     }
@@ -46,18 +40,6 @@ export const query = graphql`
 const Post = ({ data, location }) => {
   const post = data.contentfulBlogPost
   const url = location.href
-  const options = {
-    renderNode: {
-      "embedded-asset-block": (node) => {
-        const imageId = node.data.target.sys.id
-        const image = data.allContentfulAsset.edges.find(
-          (edge) => edge.node.contentful_id === fixId(imageId)
-        )
-
-        return <FeaturedImage fluid={image.node.fluid} />
-      },
-    },
-  }
 
   return (
     <Layout
@@ -74,7 +56,7 @@ const Post = ({ data, location }) => {
           <p>{post.publishedDate}</p>
         </Item>
         <Item>
-          <FeaturedImage fluid={post.featuredImage.fluid} />
+          <FeaturedImage image={post.featuredImage.gatsbyImageData} />
         </Item>
         <Item>
           <div
@@ -83,7 +65,6 @@ const Post = ({ data, location }) => {
             }}
           />
         </Item>
-        {/* <Item>{documentToReactComponents(post.body.json, options)}</Item> */}
       </Container>
     </Layout>
   )
