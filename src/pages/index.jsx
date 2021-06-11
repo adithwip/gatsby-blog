@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-import FeaturedImage from "../components/FeaturedImage"
+// import FeaturedImage from "../components/FeaturedImage"
 import Layout from "../layouts/Layout"
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
@@ -27,8 +28,8 @@ const IndexPage = ({ data }) => {
             {data.allContentfulBlogPost.edges.map(({ node }) => (
               <>
                 {node.id === latestPost && (
-                  <Item style={{ paddingBottom: 16 }}>
-                    <FeaturedImage fluid={node.featuredImage.fluid} />
+                  <Item key={node.id} style={{ paddingBottom: 16 }}>
+                    <GatsbyImage image={node.featuredImage.gatsbyImageData} />
                   </Item>
                 )}
                 <Item key={node.id}>
@@ -55,9 +56,7 @@ export const query = graphql`
           slug
           excerpt
           featuredImage {
-            fluid {
-              ...GatsbyContentfulFluid
-            }
+            gatsbyImageData
           }
           publishedDate(formatString: "DD MMMM, YYYY")
         }

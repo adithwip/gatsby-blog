@@ -12,7 +12,7 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: `Adith Widya Pradipta`,
-    siteUrl: `https://naughty-booth-62a601.netlify.com`,
+    siteUrl: `https://adithwp.netlify.app`,
     image: `./static/images/blog-image.jpg`,
   },
   plugins: [
@@ -36,6 +36,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       }
     },
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
@@ -50,13 +51,7 @@ module.exports = {
               withWebp: true,
             }
           },
-          // {
-          //   resolve: `gatsby-remark-images`,
-          //   options: {
-          //     maxWidth: 100,
-          //     // linkImagesToOriginal: false,
-          //   }
-          // },
+
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -67,7 +62,6 @@ module.exports = {
               noInlineHighlight: false,
             }
           },
-          // `gatsby-remark-relative-images`,
         ],
       },
     },

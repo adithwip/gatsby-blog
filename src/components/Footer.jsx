@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
@@ -14,12 +14,10 @@ const VerticalLine = styled.div`
 const Footer = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      {
         logo: file(relativePath: { eq: "footer-icon.png" }) {
           childImageSharp {
-            fixed(width: 80, height: 80) {
-              ...GatsbyImageSharpFixed
-            }
+            gatsbyImageData(width: 80, height: 80, layout: FIXED)
           }
         }
       }
@@ -33,7 +31,7 @@ const Footer = () => {
         <VerticalLine />
       </Item>
       <Item>
-        <Img fixed={data.logo.childImageSharp.fixed} />
+        <GatsbyImage image={data.logo.childImageSharp.gatsbyImageData} />
       </Item>
       <Item>
         <h6>© {currentYear} - Adith Widya Pradipta</h6>

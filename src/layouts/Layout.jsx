@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import Darkmode from "darkmode-js"
 
 import SectionContainer from "./SectionContainer"
 import Container from "./Container"
@@ -10,9 +9,6 @@ import Item from "./Item"
 import AbsoluteTop from "./AbsoluteTop"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-
-// const darkMode = new Darkmode()
-// darkMode.showWidget()
 
 const Layout = ({
   absoluteTop,
@@ -53,7 +49,7 @@ const Layout = ({
         {siteUrl && <meta property="og:url" content={siteUrl} />}
         <meta name="Description" content={siteDescription} />
         <title>{`${siteTitle} | Adith Widya Pradipta`}</title>
-        <link rel="canonical" href="https://adithwp.netlify.com/" />
+        <link rel="canonical" href="https://adithwp.netlify.app" />
       </Helmet>
       <Header />
       {absoluteTop ? (

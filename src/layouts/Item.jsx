@@ -3,24 +3,24 @@ import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
 const StyledItem = styled.div`
-  flex: ${props => props.flex};
-  margin: ${props => props.margin};
-  padding: ${props => props.padding};
+  flex: ${(props) => props.flex};
+  margin: ${(props) => props.margin};
+  padding: ${(props) => props.padding};
 
-  ${props =>
+  ${(props) =>
     props.alignSelf &&
     css`
-      align-self: ${props => props.alignSelf};
+      align-self: ${(props) => props.alignSelf};
     `}
 
-  ${props =>
+  ${(props) =>
     props.align &&
     css`
-      text-align: ${props => props.align};
+      text-align: ${(props) => props.align};
     `}
 `
 
-const Item = props => {
+const Item = (props) => {
   const { flex, alignSelf, align } = props
 
   return (

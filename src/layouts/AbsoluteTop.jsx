@@ -10,7 +10,7 @@ const StyledElement = styled.div`
   left: 0;
 `
 
-const AbsoluteTop = props => (
+const AbsoluteTop = (props) => (
   <StyledElement className="absolute-top" {...props} />
 )
 
