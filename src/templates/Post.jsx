@@ -7,14 +7,14 @@ import Layout from "../layouts/Layout"
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
 
-const fixId = id => {
+const fixId = (id) => {
   if (id.length === 23 && id.startsWith("c")) {
     return id.slice(1)
   }
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       publishedDate(formatString: "MMMM Do, YYYY")
@@ -48,10 +48,10 @@ const Post = ({ data, location }) => {
   const url = location.href
   const options = {
     renderNode: {
-      "embedded-asset-block": node => {
+      "embedded-asset-block": (node) => {
         const imageId = node.data.target.sys.id
         const image = data.allContentfulAsset.edges.find(
-          edge => edge.node.contentful_id === fixId(imageId)
+          (edge) => edge.node.contentful_id === fixId(imageId)
         )
 
         return <FeaturedImage fluid={image.node.fluid} />

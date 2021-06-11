@@ -6,29 +6,29 @@ const StyledContainer = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  flex-direction: ${props => props.flexDirection};
-  flex-wrap: ${props => props.flexWrap};
-  justify-content: ${props => props.justify};
-  align-items: ${props => props.alignItems};
-  align-content: ${props => props.alignContent};
-  margin: ${props => props.margin};
-  padding: ${props => props.padding};
+  flex-direction: ${(props) => props.flexDirection};
+  flex-wrap: ${(props) => props.flexWrap};
+  justify-content: ${(props) => props.justify};
+  align-items: ${(props) => props.alignItems};
+  align-content: ${(props) => props.alignContent};
+  margin: ${(props) => props.margin};
+  padding: ${(props) => props.padding};
 
-  ${props =>
+  ${(props) =>
     props.fullWidth &&
     css`
       width: 100% !important;
     `}
 
-  ${props =>
+  ${(props) =>
     props.spacing &&
     css`
       & > div.grid-item {
-        padding: ${props => props.spacing / 2}px;
+        padding: ${(props) => props.spacing / 2}px;
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.column &&
     css`
       @media (min-width: 768px) {
@@ -40,19 +40,19 @@ const StyledContainer = styled.div`
         @media (min-width: 768px) {
           display: block;
           flex: none;
-          width: ${props => 100 / props.column}%;
+          width: ${(props) => 100 / props.column}%;
         }
 
         @media (min-width: 992px) {
           display: block;
           flex: none;
-          width: ${props => 100 / (props.column + 1)}%;
+          width: ${(props) => 100 / (props.column + 1)}%;
         }
       }
     `}
 `
 
-const Container = props => {
+const Container = (props) => {
   const {
     column,
     flexDirection,

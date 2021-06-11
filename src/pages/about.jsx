@@ -1,20 +1,17 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../layouts/Layout"
 import SectionContainer from "../layouts/SectionContainer"
 
 export const query = graphql`
-  query {
+  {
     headerArt: file(relativePath: { eq: "absurd-design-glasses.png" }) {
       childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
-
     contentfulAboutPageContents {
       paragraphOne {
         childMarkdownRemark {
@@ -33,7 +30,7 @@ const AboutPage = ({ data }) => (
     siteDescription="Will provide my readers about myself"
   >
     <SectionContainer mobileFirst noPadding>
-      <Img fluid={data.headerArt.childImageSharp.fluid} />
+      <GatsbyImage image={data.headerArt.childImageSharp.gatsbyImageData} />
     </SectionContainer>
     <SectionContainer mobileFirst>
       <h1>Hi, I'm Adith!</h1>

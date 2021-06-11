@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import Container from "../layouts/Container"
 import Item from "../layouts/Item"
 
-const PostExcerpt = props => (
+const PostExcerpt = (props) => (
   <Container flexDirection="column">
     <Item>
       <Link to={`/${props.data.slug}`}>
